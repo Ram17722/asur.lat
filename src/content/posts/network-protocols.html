@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Protocols - Blog Post</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/content.css">
+    <link rel="stylesheet" href="../../css/posts.css">
+    <script src="../../js/navbar.js" defer></script>
+</head>
+<body>
+
+<!-- navbar section starts  -->
+<div id="navbar-container"></div>
+<!-- navbar section ends -->
+
+<!-- blog post section starts -->
+<section class="post" id="post">
+    <h1 class="heading">Network <span>Protocols</span></h1>
+
+    <div class="post-container">
+        <div class="post-content">
+            <div class="post-header">
+                <p class="post-date"><i class="fas fa-calendar"></i> January 15, 2024</p>
+                <div class="post-tags">
+                    <span class="tag">Networking</span>
+                    <span class="tag">Security</span>
+                    <span class="tag">Protocols</span>
+                </div>
+            </div>
+
+            <article class="post-body">
+                <!-- Blog content starts here -->
+                <h2>Introduction</h2>
+                <h3>Understanding Key Networking Protocols and Port Numbers</h3>
+                <p>In today’s interconnected world, networking protocols form the backbone of digital communication. Whether you're setting up a home network or managing an enterprise system, having a solid grasp of how devices interact is crucial. In this blog post, we’ll dive into several fundamental networking protocols—from how devices share a single public IP address to the intricacies of email retrieval—while also exploring their roles in the TCP/IP model and the port numbers they utilize.</p>
+
+                <h2>Network Address Translation (NAT)</h2>
+                <p>Imagine your local network at home or in the office, where every device—be it your smartphone, laptop, or printer—has its own private IP address. These addresses allow devices to communicate directly within the network. However, when these devices need to access the public internet, they rely on a single public IP address assigned by your Internet Service Provider (ISP).</p>
+                <p><strong>How NAT Works:</strong></p>
+                <ul>
+                    <li><strong>Outgoing Communication:</strong> The router replaces the private source IP address with its public IP address when a device sends data to the internet.</li>
+                    <li><strong>Incoming Communication:</strong> For responses from the internet, the router reverses the process and directs the data back to the appropriate private IP address on the local network.</li>
+                </ul>
+                <p>NAT is typically managed by routers or firewalls configured to perform this task, operating across both the internet (Layer 2) and transport (Layer 3) layers of the TCP/IP model.</p>
+
+                <h3>Private vs. Public IP Addresses</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Private IP Addresses</th>
+                            <th>Public IP Addresses</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                - Assigned by the router<br>
+                                - Unique only within a private network<br>
+                                - No cost to use<br>
+                                - Address ranges:<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 10.0.0.0–10.255.255.255<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 172.16.0.0–172.31.255.255<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 192.168.0.0–192.168.255.255
+                            </td>
+                            <td>
+                                - Assigned by ISP and IANA<br>
+                                - Unique on the global internet<br>
+                                - Leasing a public IP address incurs a cost<br>
+                                - Assignable address ranges:<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 1.0.0.0–9.255.255.255<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 11.0.0.0–126.255.255.255<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 128.0.0.0–172.15.255.255<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 172.32.0.0–192.167.255.255<br>
+                                &nbsp;&nbsp;&nbsp;&bull; 192.169.0.0–233.255.255.255
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Dynamic Host Configuration Protocol (DHCP)</h2>
+                <p>DHCP is an application layer protocol used to automate the process of assigning IP addresses to devices on a network. When a device connects, it requests an IP address from a DHCP server—typically integrated into your router—which then assigns a unique address along with the default gateway and DNS server addresses.</p>
+                <p><strong>Key Points:</strong></p>
+                <ul>
+                    <li><strong>DHCP Servers:</strong> Operate on UDP port 67.</li>
+                    <li><strong>DHCP Clients:</strong> Use UDP port 68.</li>
+                </ul>
+                <p>This dynamic assignment simplifies network management and ensures seamless connectivity without manual configuration.</p>
+
+                <h2>Address Resolution Protocol (ARP)</h2>
+                <p>Every device on a network not only has an IP address but also a unique hardware (MAC) address. While IP addresses help route traffic across networks, MAC addresses are essential for communication within the same local network. ARP translates IP addresses into MAC addresses when the destination hardware address is unknown.</p>
+                <p>Each device maintains an <strong>ARP cache</strong>—a table of IP-to-MAC address mappings that is updated as needed. Since ARP operates at the network access layer (Layer 2) of the TCP/IP model, it does not use port numbers.</p>
+
+                <h2>Remote Access: Telnet vs. Secure Shell (SSH)</h2>
+                <h3>Telnet</h3>
+                <p>Telnet is an application layer protocol that enables remote connections via a command-line interface. However, it transmits data in clear text, making it vulnerable to interception. Telnet uses TCP port 23 and is less secure compared to modern alternatives.</p>
+
+                <h3>Secure Shell (SSH)</h3>
+                <p>SSH addresses the security shortcomings of Telnet by providing encrypted communication for remote access. Operating over TCP port 22, SSH is the preferred method for secure remote administration, ensuring that credentials and data remain protected.</p>
+
+                <h2>Email Protocols: POP3, IMAP, and SMTP</h2>
+                <h3>Post Office Protocol (POP3)</h3>
+                <p>POP3 is used to retrieve emails from a mail server. When using POP3, emails are typically downloaded to a local device, which may make syncing across multiple devices challenging.</p>
+                <ul>
+                    <li><strong>Unencrypted Communication:</strong> Uses TCP/UDP port 110.</li>
+                    <li><strong>Encrypted Communication:</strong> Uses TCP/UDP port 995 (SSL/TLS).</li>
+                </ul>
+
+                <h3>Internet Message Access Protocol (IMAP)</h3>
+                <p>IMAP offers more flexibility for email retrieval by keeping emails on the server, thus allowing access from multiple devices. IMAP enables partial downloading of email content, so you can start reading before the entire message is fetched.</p>
+                <ul>
+                    <li><strong>Unencrypted Communication:</strong> Uses TCP port 143.</li>
+                    <li><strong>Encrypted Communication:</strong> Uses TCP port 993 (TLS).</li>
+                </ul>
+
+                <h3>Simple Mail Transfer Protocol (SMTP)</h3>
+                <p>SMTP is used for transmitting and routing emails from the sender to the recipient’s mail server. It works with Message Transfer Agent (MTA) software and DNS servers to ensure emails reach their destination.</p>
+                <ul>
+                    <li><strong>Unencrypted Communication:</strong> Uses TCP/UDP port 25.</li>
+                    <li><strong>Encrypted Communication:</strong> Uses TCP/UDP port 587 (TLS).</li>
+                </ul>
+                <p>SMTP also helps in spam filtering by regulating the number of emails sent from a single source.</p>
+
+                <h2>Protocols and Port Numbers at a Glance</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Protocol</th>
+                            <th>Port(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DHCP</td>
+                            <td>UDP port 67 (servers)<br>UDP port 68 (clients)</td>
+                        </tr>
+                        <tr>
+                            <td>ARP</td>
+                            <td>None (operates at Layer 2)</td>
+                        </tr>
+                        <tr>
+                            <td>Telnet</td>
+                            <td>TCP port 23</td>
+                        </tr>
+                        <tr>
+                            <td>SSH</td>
+                            <td>TCP port 22</td>
+                        </tr>
+                        <tr>
+                            <td>POP3</td>
+                            <td>TCP/UDP port 110 (unencrypted)<br>TCP/UDP port 995 (encrypted, SSL/TLS)</td>
+                        </tr>
+                        <tr>
+                            <td>IMAP</td>
+                            <td>TCP port 143 (unencrypted)<br>TCP port 993 (encrypted, SSL/TLS)</td>
+                        </tr>
+                        <tr>
+                            <td>SMTP</td>
+                            <td>TCP/UDP port 25 (unencrypted)<br>TCP/UDP port 587 (encrypted, TLS)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Key Takeaways</h2>
+                <p>As a cybersecurity analyst or network professional, familiarity with these protocols is fundamental. From NAT that bridges your private and public networks to the secure channels provided by SSH, each protocol plays a unique role in ensuring seamless and secure communication. Memorizing the associated port numbers and understanding where each protocol fits in the TCP/IP model is essential, whether during technical interviews or while configuring network devices.</p>
+                <p>By mastering these protocols, you not only enhance your technical expertise but also empower yourself to build and maintain robust, secure networks in an ever-evolving digital landscape.</p>
+                <!-- Blog content ends here -->
+            </article>
+
+            <div class="post-footer">
+                <div class="share-buttons">
+                    <a href="#" class="btn"><i class="fab fa-twitter"></i> Share on Twitter</a>
+                    <a href="#" class="btn"><i class="fab fa-linkedin"></i> Share on LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <aside class="post-sidebar">
+            <div class="author-info">
+                <h3>About the Author</h3>
+                <p>Brief description about yourself or your expertise in networking.</p>
+            </div>
+            
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul>
+                    <li><a href="#">Introduction to Cybersecurity</a></li>
+                    <li><a href="#">Web Security Basics</a></li>
+                    <li><a href="#">Understanding TCP/IP</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+</section>
+<!-- blog post section ends -->
+
+<!-- footer section starts  -->
+<section class="footer">
+    <div class="share">
+        <a href="#" class="fab fa-facebook-f"></a>
+        <a href="#" class="fab fa-instagram"></a>
+        <a href="#" class="fab fa-linkedin"></a>
+    </div>
+</section>
+<!-- footer section ends -->
+
+</body>
+</html>
