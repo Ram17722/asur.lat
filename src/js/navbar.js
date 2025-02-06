@@ -13,6 +13,7 @@
     const basePath = getBasePath();
     const homeHref = `${basePath}../../index.html`;
     const blogsHref = `${basePath}../content/blogs.html`;
+    const projectsHref = `${basePath}../content/projects.html`;
     const contactHref = `${basePath}../content/contact.html`;
     
     // The navbar markup with dynamic href values and a loading bar at the top.
