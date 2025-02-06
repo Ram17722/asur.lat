@@ -13,7 +13,6 @@
     const basePath = getBasePath();
     const homeHref = `${basePath}../../index.html`;
     const blogsHref = `${basePath}../content/blogs.html`;
-    const projectsHref = `${basePath}../content/projects.html`;
     const contactHref = `${basePath}../content/contact.html`;
     
     // The navbar markup with dynamic href values and a loading bar at the top.
@@ -24,7 +23,6 @@
         <div class="navbar-content">
             <a href="${homeHref}">Home</a>
             <a href="${blogsHref}">Blogs</a>
-            <a href="${projectsHref}">Projects</a>
             <a href="${contactHref}">Contact</a>
         </div>
       </nav>
