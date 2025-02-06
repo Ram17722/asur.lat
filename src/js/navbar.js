@@ -31,7 +31,6 @@
         <div class="close-btn" onclick="closeMenu()">&times;</div>
         <a href="${homeHref}" onclick="closeMenu()">Home</a>
         <a href="${blogsHref}" onclick="closeMenu()">Blogs</a>
-        <a href="${projectsHref}" onclick="closeMenu()">Projects</a>
         <a href="${contactHref}" onclick="closeMenu()">Contact</a>
       </div>
     `;
