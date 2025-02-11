@@ -1,27 +1,35 @@
 (function() {
     // Determine the base URL for the website
     const getBasePath = () => {
-        const scriptTags = document.getElementsByTagName('script');
-        for (let tag of scriptTags) {
-            if (tag.src.includes('navbar.js')) {
-                return tag.src.split('navbar.js')[0];
-            }
+        // For GitHub Pages, we need to handle the repository name
+        const repoName = 'asur.lat'; // Updated repository name
+        if (window.location.hostname === 'ram17722.github.io') {
+            return `/${repoName}/`;
         }
         return '/';
     };
 
     const basePath = getBasePath();
+    
     // Define routes and their corresponding file paths
     const routes = {
-        '/': '../../index.html',
-        '/blogs': '../content/blogs.html',
-        '/projects': '../content/projects.html',
-        '/contact': '../content/contact.html'
+        '/': 'index.html',
+        '/blogs': 'src/content/blogs.html',
+        '/projects': 'src/content/projects.html',
+        '/contact': 'src/content/contact.html'
     };
 
     // Function to handle navigation
     async function handleNavigation(path) {
-        const filePath = `${basePath}${routes[path]}`;
+        // Adjust path for GitHub Pages
+        const adjustedPath = window.location.hostname === 'ram17722.github.io' 
+            ? `/${repoName}${path}` 
+            : path;
+            
+        const filePath = path === '/' 
+            ? `${basePath}index.html` 
+            : `${basePath}${routes[path]}`;
+
         try {
             const response = await fetch(filePath);
             if (!response.ok) throw new Error('Page not found');
@@ -36,14 +44,42 @@
             document.body.innerHTML = newContent;
             
             // Update URL without page reload
-            window.history.pushState({}, '', path);
+            window.history.pushState({}, '', adjustedPath);
             
             // Reinitialize any necessary scripts
             if (document.querySelector('#navbar-container')) {
                 initializeNavbar();
             }
+            
+            // Complete the loading bar
+            completeLoadingBar();
         } catch (error) {
             console.error('Navigation error:', error);
+            // Reset loading bar on error
+            resetLoadingBar();
+        }
+    }
+
+    // Function to complete the loading bar animation
+    function completeLoadingBar() {
+        const loadingBar = document.getElementById('loadingBar');
+        if (loadingBar) {
+            loadingBar.style.width = '100%';
+            setTimeout(() => {
+                loadingBar.style.opacity = '0';
+                setTimeout(() => {
+                    loadingBar.style.width = '0%';
+                    loadingBar.style.opacity = '1';
+                }, 300);
+            }, 150);
+        }
+    }
+
+    // Function to reset the loading bar
+    function resetLoadingBar() {
+        const loadingBar = document.getElementById('loadingBar');
+        if (loadingBar) {
+            loadingBar.style.width = '0%';
         }
     }
 
