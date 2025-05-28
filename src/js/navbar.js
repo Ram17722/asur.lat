@@ -12,7 +12,7 @@
 
     const basePath = getBasePath();
     const homeHref = `${basePath}../../index.html`;
-    const blogsHref = `${basePath}../content/blogs.html`;
+    const blogsHref = `${basePath}../content/blog.html`;
 
     const contactHref = `${basePath}../content/contact.html`;
     
@@ -23,7 +23,7 @@
       <nav class="navbar">
         <div class="navbar-content">
             <a href="${homeHref}">Home</a>
-            <a href="${blogsHref}">Blogs</a>
+            <a href="${blogsHref}">Blog</a>
 
             <a href="${contactHref}">Contact</a>
         </div>
@@ -32,7 +32,7 @@
       <div class="mobile-menu" id="mobileMenu">
         <div class="close-btn" onclick="closeMenu()">&times;</div>
         <a href="${homeHref}" onclick="closeMenu()">Home</a>
-        <a href="${blogsHref}" onclick="closeMenu()">Blogs</a>
+        <a href="${blogsHref}" onclick="closeMenu()">Blog</a>
 
         <a href="${contactHref}" onclick="closeMenu()">Contact</a>
       </div>
