@@ -271,11 +271,17 @@
         const body = document.body;
         const icon = toggle.querySelector('i');
         
-        // Check for saved theme preference
+        // Check if theme preference exists in localStorage
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.add('light-mode');
-            icon.classList.replace('fa-sun', 'fa-moon');
+        if (savedTheme) {
+            // Apply saved theme
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                body.classList.remove('light-mode');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
         }
 
         toggle.addEventListener('click', () => {
