@@ -104,12 +104,14 @@
             top: 15px;
             left: 15px;
             background: rgba(51, 51, 51, 0.7);
+            backdrop-filter: blur(8px);
             padding: 8px;
             border-radius: 50%;
             color: #fff;
             cursor: pointer;
             font-size: 1.4rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             width: 35px;
             height: 35px;
@@ -133,9 +135,12 @@
             transform: translateX(-50%);
             z-index: 100;
             background: rgba(51, 51, 51, 0.7);
+            backdrop-filter: blur(8px);
             padding: 10px 2.5%;
             border-radius: 20px;
             width: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
         }
 
         .navbar-content {
@@ -175,6 +180,9 @@
             width: 250px;
             height: 100%;
             background: rgba(51, 51, 51, 0.9);
+            backdrop-filter: blur(8px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
             transition: right 0.3s ease;
             padding-top: 60px;
             display: flex;
