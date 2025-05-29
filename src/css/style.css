@@ -23,6 +23,11 @@
     --glass-bg: rgba(243, 244, 246, 0.7);
     --glass-border: rgba(255, 255, 255, 0.5);
     --glass-shadow: rgba(0, 0, 0, 0.1);
+
+    /* Update the dark blue tints to be darker */
+    --dark-blue-glass: rgba(25, 25, 45, 0.7);  /* Darker blue for glass effects */
+    --dark-blue-glass-mobile: rgba(25, 25, 45, 0.95);  /* More opaque version for mobile */
+    --dark-blue-badge: rgba(25, 25, 45, 0.4);  /* Lighter version for badges */
 }
 
 *{
@@ -183,7 +188,10 @@ section{
 .about .row {
     display: flex;
     align-items: center;
-    background: var(--black);
+    background: var(--dark-blue-glass);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     flex-wrap: wrap;
     justify-content: center;
     max-width: 900px;
@@ -191,7 +199,6 @@ section{
     margin: 0 auto;
     padding: 2rem;
     border-radius: 17px;
-    border: 1px solid #fff1;
     position: relative;
     z-index: 2;
 }
@@ -229,7 +236,10 @@ section{
 .skills .row {
     display: flex;
     align-items: center;
-    background: var(--black);
+    background: var(--dark-blue-glass);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     flex-wrap: wrap;
     justify-content: center;
     max-width: 900px;
@@ -237,7 +247,6 @@ section{
     margin: 0 auto;
     padding: 10px 20px;
     border-radius: 17px;
-    border: 1px solid #fff1;
     position: relative;
     margin-bottom: 20px; /* Adds space between blocks */
 }
@@ -275,6 +284,12 @@ section{
     color: var(--transparent-white-90);
 }
 
+.DevBadge_badge-lg {
+    background: var(--dark-blue-badge);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .dev-badge svg {
     width: 24px;
     height: 24px;
@@ -286,7 +301,8 @@ section{
     position: fixed;
     top: 15px;
     left: 15px; /* Position on the left */
-    background: rgba(51, 51, 51, 0.7); /* Dark background for both modes */
+    background: var(--dark-blue-glass);
+    backdrop-filter: blur(8px);
     padding: 10px;
     border-radius: 20px;
     color: var(--white);
@@ -471,9 +487,19 @@ body.light-mode #loadingBar {
 }
 
 @media (max-width: 450px) {
+    .about .row,
+    .skills .row {
+        background: var(--dark-blue-glass-mobile);
+    }
+
     body.light-mode .about .row,
     body.light-mode .skills .row {
         background: rgba(255, 255, 255, 0.8);
+    }
+
+    .about .row,
+    .skills .row {
+        background: rgba(41, 41, 82, 0.8); /* Slightly more opaque on mobile */
     }
 }
 
@@ -625,4 +651,10 @@ body.light-mode #loadingBar {
     section {
         padding: 2rem 4%; /* Reduce horizontal padding on very small screens */
     }
+}
+
+.mobile-menu {
+    background: var(--dark-blue-glass-mobile);
+    backdrop-filter: blur(8px);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
